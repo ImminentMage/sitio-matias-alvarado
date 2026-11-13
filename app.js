@@ -1,4 +1,5 @@
 document.documentElement.classList.add('js');
+const currentPage = location.pathname.split('/').pop() || 'index.html';
 document.querySelectorAll('.footer-links').forEach((links) => {
   if (!links.querySelector('a[href="privacidad.html"]')) {
     links.insertAdjacentHTML('beforeend', '<a href="privacidad.html">Privacidad y datos</a>');
@@ -81,7 +82,7 @@ document.querySelectorAll('.publication h4, .record h3').forEach((title) => {
 });
 
 const profileFrame = document.querySelector('.network-wrap');
-if (profileFrame && location.pathname.endsWith('index.html')) {
+if (profileFrame && currentPage === 'index.html') {
   profileFrame.classList.add('profile-frame');
   profileFrame.removeAttribute('aria-hidden');
   profileFrame.innerHTML = '<img src="assets/matias-alvarado.jpg" alt="Dr. José Matías Alvarado Mentado">';
@@ -104,20 +105,20 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
   document.querySelectorAll('.reveal').forEach((element) => element.classList.add('visible'));
 }
 
-if (location.pathname.includes('Organizacioneventos.html')) {
+if (currentPage === 'Organizacioneventos.html') {
   document.querySelector('.dark-lab')?.remove();
   const script = document.createElement('script');
   script.src = 'events.js';
   document.body.append(script);
 }
 
-if (location.pathname.endsWith('index.html')) {
+if (currentPage === 'index.html') {
   document.querySelectorAll('.research-card').forEach((card, index) => {
     card.href = ['temas.html#cancer', 'temas.html#emociones', 'temas.html#estrategia', 'temas.html#robotica'][index];
   });
 }
 
-if (location.pathname.endsWith('temas.html')) {
+if (currentPage === 'temas.html') {
   document.querySelectorAll('.record').forEach((record, index) => {
     record.id = ['cancer', 'emociones', 'estrategia', 'robotica'][index] || '';
   });
@@ -132,7 +133,7 @@ if (location.pathname.endsWith('temas.html')) {
   });
 }
 
-if (location.pathname.endsWith('Colaboradorespostdoctorales.html')) {
+if (currentPage === 'Colaboradorespostdoctorales.html') {
   const postdoctoralProfiles = {
     'Dra. Maria Elena Sanchez Bello': 'https://mx.linkedin.com/in/maria-elena-sanchez-bello-46976b264?trk=people_directory',
     'Dr. Irving Ulises Martinez Vargas': 'https://mx.linkedin.com/in/irvingumartinez',
