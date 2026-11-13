@@ -80,14 +80,6 @@ document.querySelectorAll('.publication h4, .record h3').forEach((title) => {
   if (metadata) title.insertAdjacentHTML('afterend', `<p class="publication-meta">${metadata.text}</p>`);
 });
 
-const signal = document.querySelector('.signal-card');
-if (signal) {
-  const heading = signal.querySelector('strong');
-  const description = signal.querySelector('p');
-  if (heading) heading.textContent = 'Cáncer · Estrategia · Robótica';
-  if (description) description.textContent = 'Líneas de investigación conectadas por modelación y cómputo.';
-}
-
 const profileFrame = document.querySelector('.network-wrap');
 if (profileFrame && location.pathname.endsWith('index.html')) {
   profileFrame.classList.add('profile-frame');
